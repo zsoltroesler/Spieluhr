@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
             // because we no longer need it.
             mMediaPlayer.release();
 
-            // Set the media player back to null. 
+            // Set the media player back to null.
             mMediaPlayer = null;
         }
     }
