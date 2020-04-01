@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Find the corresponding buttons
-        playKiwi = (Button) findViewById(R.id.play_kiwi);
-        stopKiwi = (Button) findViewById(R.id.stop_kiwi);
-        playMomo = (Button) findViewById(R.id.play_momo);
-        stopMomo = (Button) findViewById(R.id.stop_momo);
+        playKiwi = findViewById(R.id.play_kiwi);
+        stopKiwi = findViewById(R.id.stop_kiwi);
+        playMomo = findViewById(R.id.play_momo);
+        stopMomo = findViewById(R.id.stop_momo);
 
         // Create and setup the {@link AudioManager} to request audio focus
         mAudioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
 
                     // Create the corresponding media player with Kiwi's song
-                    mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.kiwi);
+                    mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.funkel);
 
                     mMediaPlayer.start();
                     playKiwi.setEnabled(false);
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 playKiwi.setEnabled(true);
                 playMomo.setEnabled(true);
                 stopMomo.setEnabled(true);
-                mMediaPlayer.stop();
+                if(mMediaPlayer != null) mMediaPlayer.stop();
 
                 // Abandon audio focus when playback complete
                 mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
 
                     // Create the corresponding media player for Momo's song
-                    mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.momo);
+                    mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.lalelu);
                     mMediaPlayer.start();
                     playMomo.setEnabled(false);
                     playKiwi.setEnabled(false);
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                 playMomo.setEnabled(true);
                 playKiwi.setEnabled(true);
                 stopKiwi.setEnabled(true);
-                mMediaPlayer.stop();
+                if(mMediaPlayer != null) mMediaPlayer.stop();
 
                 // Abandon audio focus when playback complete
                 mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
